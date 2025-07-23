@@ -1,0 +1,23 @@
+extends layout 
+block content 
+  header 
+    title chick Request Form 
+    link(rel="stylesheet", href="style/chicks.css")
+  .container.my-5
+    h2.text-center.mb-4 Request Forms
+    .card.mb-4
+      .card-header.bg-warning.text-dark
+        h4 Chick Request Form
+      .card-body
+        form#chicks(action="/addChicks")
+          .mb-3
+            label.form-label Chick Type
+            input.form-control(type='text' name='chickrequest' placeholder='e.g. Broiler, Layer' required='')
+          .mb-3
+            label.form-label Quantity
+            input.form-control(type='number' name='quantity' required='')
+          .mb-3
+            label.form-label Hatch Date
+            input.form-control(type='date' name='hatchdate' required='')
+          button.btn.btn-warning(type='submit') Request Chicks
+    script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js')
