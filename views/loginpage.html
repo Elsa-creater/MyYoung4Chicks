@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Young4ChickS Login</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="login-body">
+  <div class="container d-flex justify-content-center align-items-center min-vh-100">
+    <div class="card shadow p-4 login-card">
+      <h2 class="text-center mb-4">Login to Young4ChickS</h2>
+      <form action="/login" method="POST">
+        <div class="mb-3">
+          <label for="role" class="form-label">Select Role</label>
+          <select class="form-select" id="role" name="role" required>
+            <option value="" disabled selected>Choose your role</option>
+            <option value="sales_agent">Sales Agent</option>
+            <option value="youth_farmer">Youth Farmer</option>
+            <option value="brooder_manager">Brooder Manager</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="username" class="form-label">Username or Email</label>
+          <input type="text" class="form-control" id="username" name="username" required />
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" class="form-control" id="password" name="password" required />
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Login</button>
+        <p class="mt-3 text-center">
+          Don't have an account? <a href="/register">Register</a>
+        </p>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

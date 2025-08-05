@@ -9,5 +9,9 @@ router.get('/addChicks', (req, res) => {
 router.post('/addChicks', (req, res) => {
     console.log(req.body)
 });
+
+router
+
+
 module.exports = router;
 

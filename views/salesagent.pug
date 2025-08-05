@@ -12,13 +12,19 @@ head
     .card-header.bg-success.text-white
       h4 Sales Agent Registration
     .card-body
-      form#salesagent(action='/addsalesAgent' method='POST')
+      form#salesagent(action='/salesagent' method='POST')
         .mb-3
           label.form-label Full Name
           input.form-control(type='text' name='fullname' placeholder='sales Agent Name' required='')
         .mb-3
           label.form-label Phone Number
-          input.form-control(type='tel' name='phonenumber' required='')
+          input.form-control(type='tel' name='phonenumber' placeholder='+256...' required='')
+        .mb-3
+          label.form-label NIN (National ID Number)
+          input.form-control(type='text' name='nin' placeholder='e.g. NIN...' required='')
+        .mb-3
+          label.form-label Email Address
+          input.form-control(type='email' name='email' placeholder='e.g. example@example.com' required='')
         .mb-3
           label.form-label Assigned Area
           input.form-control(type='text' name='assignedarea' placeholder='Region, District, etc.' required='')

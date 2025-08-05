@@ -1,26 +1,44 @@
 //1.Dependencies
 const express = require("express");
 const path = require('path');
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
+const User = require("./models/User"); // Import User model
+
+require("dotenv").config(); // to load environment variables from .env file
 
 //importing routes
 const studyRoutes = require("./routes/studyRoutes");
-const indexRoutes = require("./routes/indexRoutes");
+const loginpageRoutes = require("./routes/loginpageRoutes");
 const chicksRoutes = require("./routes/chicksRoutes");
 const youthfarmerRoutes = require("./routes/youthfarmerRoutes");
 const salesagentRoutes = require("./routes/salesagentRoutes");
-const requestRoutes = require("./routes/requestRoutes");
+const chickrequestformRoutes = require("./routes/chickrequestformRoutes");
+const chickstockRoutes = require("./routes/chickstockRoutes");
 //2.Instatiations
 const app = express();
 const port = 3000;
 
 //3.Configurations
+mongoose.connect(process.env.DATABASE);// connect to the database using the environment variable DATABASE
+ mongoose.connection
+.once("open", () => {
+     console.log("Mongoose connection opened successfully");
+})
+.on("error", (error) =>{
+    console.error("Connection error: ${error.message}");
+ });
+
 app.set("view engine", "pug") // set pug as the view engine
-app.set('views', path.join(__dirname,'views')); // specofy the folder containing the frontend files
+app.set('views', path.join(__dirname,'views')); // specify the folder containing the frontend files
+app.use(express.static(path.join(__dirname, 'public'))); // serve static files from the public folder
+
 
 //4.Middleware
 
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
+app.use(express.json()); // to parse JSON bodies
 
 //for non existence routes
 
@@ -42,11 +60,13 @@ app.use("/about", (req, res, next) => { //monitors a specific route about
 //5.Use Imported Routes
 
 app.use("/study", studyRoutes);
-app.use("/", indexRoutes);
+app.use("/", loginpageRoutes);
 app.use("/", chicksRoutes);
 app.use("/", youthfarmerRoutes);
 app.use("/", salesagentRoutes);
-app.use("/", requestRoutes);
+app.use("/", chickrequestformRoutes);
+app.use("/", chickstockRoutes);
+
 
 //understanding how to serve  html files on the web browser using a route
 // router.get("/chicks", (req, res) => {
@@ -59,6 +79,21 @@ app.use("/", requestRoutes);
 app.use((req, res) => {
     res.status(404).send("Oops! Route not Found.");
 });
+
+app.post('/login', async (req,res) => {
+    const { role, username, password } =req.body;
+    try {
+        const user = await User.findOne({ username, password, role});
+        if (!user) return res.send('invalid credentials');
+
+        if (role ==='sales_agent') return res.redirect('/dashboard/sales');
+        if (role ==='youth_farmer') return res.redirect('/dashboard/youthfarmer');
+        if (role ==='brooder_manager') return res.redirect('/dashboard/broodermanager');
+
+    } catch (error) {
+        res.status(500).send('Login error');
+    }
+})
 
 //6.Bootsrapping the server
 //Start the server  

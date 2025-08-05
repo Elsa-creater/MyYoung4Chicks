@@ -1,57 +1,146 @@
-/* General page styling */
+/* chicks.css */
+
+/* Base styles */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: rgb(168, 168, 229);
-    margin: 0;
-    padding: 40px;
-}
-
-/* Header */
-h1 {
-    text-align: center;
+    background-color: #c188e4;
+    font-family: 'Segoe UI', sans-serif;
+    padding: 20px;
+  }
+  
+  h2, h4 {
     color: #333;
-}
-
-/* Form container */
-form {
-    max-width: 500px;
-    margin: 0 auto;
-    background-color: #f9f9f9;
-    padding: 25px;
+  }
+  
+  .card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
-
-/* Labels and inputs */
-label {
-    display: block;
-    margin-bottom: 5px;
+    border: none;
+  }
+  
+  .card-header {
+    background-color: #ffc107 !important;
+    color: #212529;
     font-weight: bold;
-    color: #555;
-}
-
-input[type="text"],
-textarea {
+  }
+  
+  label {
+    font-weight: 500;
+    margin-bottom: 5px;
+  }
+  
+  input.form-control,
+  select.form-control,
+  textarea.form-control {
+    border-radius: 5px;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    margin-bottom: 10px;
+  }
+  
+  button.btn {
+    margin-top: 15px;
+    border-radius: 5px;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Button hover effect */
+  button.btn:hover {
+    background-color: #e0a800;
+    color: white;
+  }
+  
+  /* Responsive tweaks */
+  @media (max-width: 576px) {
+    .card {
+      margin: 10px;
+    }
+  
+    input.form-control {
+      font-size: 16px;
+    }
+  }
+  
+  /* Success message */
+  .alert-success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 15px;
+  }
+  
+  /* Error message */
+  .alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 15px;
+  }
+  .login-box {
+    max-width: 400px;
+    margin: 80px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #ccc;
+  }
+  .login-box h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .login-box input[type="text"],
+  .login-box input[type="password"] {
     width: 100%;
     padding: 10px;
-    margin-bottom: 15px;
+    margin: 10px 0;
     border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 14px;
-    box-sizing: border-box;
-}
-
-/* Submit button */
-input[type="submit"] {
-    background-color: #4CAF50;
+    border-radius: 5px;
+  }
+  .login-box input[type="submit"] {
+    background: #5cb85c;
     color: white;
-    padding: 10px 15px;
     border: none;
-    border-radius: 4px;
+    padding: 10px;
+    border-radius: 5px;
     cursor: pointer;
-    font-size: 16px;
-}
+  }
+  .login-box input[type="submit"]:hover {
+    background: #4cae4c;
+  }
+  .login-box a {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    color: #5cb85c;
+    text-decoration: none;
+  }
 
-input[type="submit"]:hover {
-    background-color: #45a049;
-}
+  body.login-body {
+    background: linear-gradient(to right, #c6f1e7, #e1eaff);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .login-card {
+    max-width: 400px;
+    width: 100%;
+    border-radius: 12px;
+    background-color: #ffffff;
+  }
+  
+  h2 {
+    color: #2b6777;
+  }
+  
+  .btn-primary {
+    background-color: #2b6777;
+    border-color: #2b6777;
+  }
+  
+  .btn-primary:hover {
+    background-color: #1d4d5f;
+    border-color: #1d4d5f;
+  }

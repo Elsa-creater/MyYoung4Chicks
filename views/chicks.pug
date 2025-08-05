@@ -2,14 +2,15 @@ extends layout
 block content 
   header 
     title chick Request Form 
-    link(rel="stylesheet", href="style/chicks.css")
+    link(rel="stylesheet", href="/css/style.css")
   .container.my-5
     h2.text-center.mb-4 Request Forms
     .card.mb-4
       .card-header.bg-warning.text-dark
         h4 Chick Request Form
       .card-body
-        form#chicks(action="/addChicks")
+        p.text-muted Please fill out the form below to request for chicks. Ensure all fields are completed accurately.
+        form#chicks(action="/addChicks" method="POST")
           .mb-3
             label.form-label Chick Type
             input.form-control(type='text' name='chickrequest' placeholder='e.g. Broiler, Layer' required='')
